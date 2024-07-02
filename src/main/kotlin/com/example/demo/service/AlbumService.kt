@@ -8,9 +8,9 @@ import org.springframework.web.client.RestTemplate
 @Service
 class AlbumService {
 
-   private val restTemplate: RestTemplate()
-   private val albumUrl: "https://jsonplaceholder.typicode.com/albums"
-   private val photoUrl: "https://jsonplaceholder.typicode.com/photos?albumId="
+    private val restTemplate = RestTemplate()
+    private val albumUrl = "https://jsonplaceholder.typicode.com/albums"
+    private val photoUrl = "https://jsonplaceholder.typicode.com/photos?albumId="
 
    fun getAllAlbums(): List<Album> {
        val response = restTemplate.getForEntity(albumUrl, Array<Album>::class.java)
@@ -20,7 +20,7 @@ class AlbumService {
    fun getAlbumDetails(id: Int): Album {
        val response = restTemplate.getForEntity("$albumUrl/$id", Album::class.java)
        val album = response.body ?: throw RuntimeException("Album not found")
-       val photos = restTemplate.getForEntity("$photoUrl$Id", Array<Photo>::class.java).body?.toList() ?: emptyList()
+       val photos = restTemplate.getForEntity("$photoUrl$id", Array<Photo>::class.java).body?.toList() ?: emptyList()
        album.photos = photos
        return album
    }
