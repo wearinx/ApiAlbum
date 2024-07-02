@@ -30,6 +30,8 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.6.9")
+	testImplementation("org.mockito:mockito-core:4.0.0")
+	testImplementation("org.mockito:mockito-inline:4.0.0")
 }
 
 kotlin {
