@@ -1,7 +1,7 @@
 # API ALBUMS
 
 Esta es una aplicación de demostración creada con Kotlin y Spring Boot para mostrar
-todos los albunes de fotos alojados en JSON Placeholder y los detales de las fotos
+todos los albunes de fotos alojados en JSON Placeholder y los detalles de las fotos
 de cada uno de los álbumes.
 
 ## Requisitos 
