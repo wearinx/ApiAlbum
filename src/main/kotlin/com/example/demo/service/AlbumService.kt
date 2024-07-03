@@ -13,15 +13,25 @@ class AlbumService {
     private val photoUrl = "https://jsonplaceholder.typicode.com/photos?albumId="
 
     fun getAllAlbums(): List<Album> {
+
         val response = restTemplate.getForEntity(albumUrl, Array<Album>::class.java)
-        return response.body?.toList() ?: emptyList()
+        val albums = response.body?.toList() ?: emptyList()
+
+        albums.forEach { album ->
+            val photosResponse = restTemplate.getForEntity("$photoUrl${album.id}", Array<Photo>::class.java)
+            album.photos = photosResponse.body?.toList() ?: emptyList()
+        }
+
+        return albums
     }
 
     fun getAlbumDetails(id: Int): Album {
+
         val response = restTemplate.getForEntity("$albumUrl/$id", Album::class.java)
         val album = response.body ?: throw RuntimeException("Album not found")
         val photos = restTemplate.getForEntity("$photoUrl$id", Array<Photo>::class.java).body?.toList() ?: emptyList()
         album.photos = photos
         return album
+
     }
 }

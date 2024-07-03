@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/album")
+@RequestMapping("/albums")
 class AlbumController (private val albumService: AlbumService){
 
     @GetMapping
